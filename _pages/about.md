@@ -19,7 +19,7 @@ redirect_from:
 
 Hi, I'm Zeming Zhuang (庄泽铭), currently studying for a M.S. degree in Information and Communication Engineering at [iData Lab](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/group.html) in [ShanghaiTech University](https://www.shanghaitech.edu.cn/eng/). I was formerly advised by [Prof. Yang Yang](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/YANG-Yang/yyiot) and currently advised by [Prof. Yuanming Shi](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/) and [Prof. Dingzhu Wen](https://dingzhuwen.github.io/).
 
-My research interest includes optimization and ML methods in resource allocation and deployment of integrated-sensing-communication-computation and wireless communication (edge computing) networks.
+My research interest includes optimization and machine learning methods in resource allocation and deployment of integrated-sensing-communication-computation and other distributed networks such as federated learning.
 
 **I am currently searching for PhD positions (Fall 2024).**
 
@@ -55,6 +55,6 @@ Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.p
 # 🎖 Honors and Awards
 - *2023 Nov*, ShanghaiTech Merit Student (Top 10%)
 
-# 🧑‍🏫 Teaching Assistant
+# 🧑‍🏫 Teaching Assistant Experience
 - Convex Optimization (2023 Fall)
 - Introduction to Information Science and Technology (2021 Fall)

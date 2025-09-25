@@ -22,13 +22,13 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Zeming Zhuang"
-  avatar           : "images/profile.jpg"
-  bio              : "ShanghaiTech University"
-  location         : "Shanghai, China"
+  avatar           : "images/profile.png"
+  bio              : "Clemson University"
+  location         : "Clemson, SC, USA"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=gT-udAwAAAAJ"
-  email            : "zhuangzm@shanghaitech.edu.cn"
+  email            : "zemingz@clemson.edu"
   researchgate     : # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :

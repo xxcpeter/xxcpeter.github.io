@@ -17,17 +17,16 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I'm Zeming Zhuang (庄泽铭), currently studying for a M.S. degree in Information and Communication Engineering at [iData Lab](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/group.html) in [ShanghaiTech University](https://www.shanghaitech.edu.cn/eng/). I was formerly advised by [Prof. Yang Yang](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/YANG-Yang/yyiot) and currently advised by [Prof. Yuanming Shi](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/) and [Prof. Dingzhu Wen](https://dingzhuwen.github.io/).
+Hi, I'm Zeming Zhuang (庄泽铭), currently studying for a Ph.D. degree in Clemson University advised by [Prof. Lan Emily Zhang](https://sites.google.com/view/lan-zhang/home). I received my master degree in Information and Communication Engineering at [iData Lab](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/group.html) in [ShanghaiTech University](https://www.shanghaitech.edu.cn/eng/) advised by [Prof. Yang Yang](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/YANG-Yang/yyiot), [Prof. Yuanming Shi](https://faculty.sist.shanghaitech.edu.cn/faculty/shiym/) and [Prof. Dingzhu Wen](https://dingzhuwen.github.io/).
 
 My research interest includes optimization and machine learning methods in resource allocation and deployment of integrated-sensing-communication-computation and other distributed networks such as federated learning.
 
-**I am currently searching for PhD positions (Fall 2024).**
-
-Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.pdf) and contact me through [Email](mailto:zhuangzm@shanghaitech.edu.cn).
+Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.pdf).
 
 # 📖 Educations
-- *2021.09 - 2024.06 (now)*, M.S. in Information and Communication Engineering, School of Information Science and Technology, ShanghaiTech University, China. 
-- *2017.09 - 2021.06*, B.S. in Electrical Information Engineering, School of Information Science and Technology, ShanghaiTech University, China. 
+- *2024.08 - present*, Ph.D. in Electrical and Electronics Engineering, Holcombe Department of Electrical and Computer Engineering, Clemson University, U.S.
+- *2021.09 - 2024.06*, Master of Science in Information and Communication Engineering, School of Information Science and Technology, ShanghaiTech University, China. 
+- *2017.09 - 2021.06*, Bachelor of Science in Electrical Information Engineering, School of Information Science and Technology, ShanghaiTech University, China. 
 - *2017.09 - 2021.06*, Minor in Finance, School of Entreprenuership and Management, ShanghaiTech University, China. 
 
 # 🔥 News
@@ -57,4 +56,4 @@ Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.p
 
 # 🧑‍🏫 Teaching Assistant Experience
 - Convex Optimization (2023 Fall)
-- Introduction to Information Science and Technology (2021 Fall)
+- Introduction to Information Science and Technology (2021 & 2022 Fall)

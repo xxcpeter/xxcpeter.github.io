@@ -286,14 +286,14 @@ author_profile: true
 
 <section id="method" class="block">
   <h2>Method (SLASH Formulation)</h2>
-  <p>Following the PDF formulation, we model scratch artifacts as a trigger-conditioned optical channel. Calibrated physical parameters describe streak appearance (length, width, softness, diffusion, intensity scale), while deployment parameters encode attacker-controlled scratch orientation and offset.</p>
+  <p>In our formulation, we model scratch artifacts as a trigger-conditioned optical channel. Calibrated physical parameters describe streak appearance (length, width, softness, diffusion, intensity scale), while deployment parameters encode attacker-controlled scratch orientation and offset.</p>
   <p>The attack objective is directional: push a target prediction closer or farther while reducing collateral drift on non-target regions. For detection, objective terms also discourage degenerate behavior such as target disappearance or identity swap. Because the search space is non-convex and partially discontinuous, we optimize scratch parameters with gradient-free population methods and use CMA-ES as the default optimizer.</p>
   <div class="note"><strong>Why optical-space optimization matters:</strong> this pipeline captures how fixed physical defects become scene-triggered image evidence, which is fundamentally different from per-image pixel perturbation.</div>
 </section>
 
 <section id="experiment-setup" class="block">
   <h2>Experiment Setup</h2>
-  <p>Digital evaluation follows the protocol summarized from the project PDF: nuScenes validation scenes with a focus on strong-light conditions, plus day/night splits for robustness comparison. We report relative depth error (RE) and RE increments to isolate attack-induced shift from each model's clean baseline error.</p>
+  <p>Digital evaluation uses nuScenes validation scenes with a focus on strong-light conditions, plus day/night splits for robustness comparison. We report relative depth error (RE) and RE increments to isolate attack-induced shift from each model's clean baseline error.</p>
   <div class="cols-2">
     <div>
       <h3>Physical Pipeline</h3>

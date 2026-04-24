@@ -14,6 +14,8 @@ author_profile: true
   --soft: #f4f7fb;
   --accent: #0b5cab;
   --accent-2: #0f8a70;
+  max-width: 980px;
+  margin: 0 auto;
 }
 .project-post .hero {
   background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 45%, #eef9f7 100%);
@@ -108,6 +110,7 @@ author_profile: true
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem;
+  align-items: start;
 }
 .project-post figure {
   margin: 0;
@@ -118,7 +121,22 @@ author_profile: true
 }
 .project-post figure img {
   width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  height: auto;
+  object-fit: contain;
   display: block;
+  margin: 0 auto;
+  padding: 0.4rem;
+  background: #f8fbff;
+}
+.project-post figure.wide img {
+  max-width: 300px;
+  max-height: 300px;
+}
+.project-post figure.compact img {
+  max-width: 300px;
+  max-height: 300px;
 }
 .project-post figcaption {
   padding: 0.6rem 0.7rem;
@@ -188,6 +206,8 @@ author_profile: true
   <a href="#abstract">Abstract</a>
   <a href="#problem-setup">Problem Setup</a>
   <a href="#optical-mechanism">Optical Mechanism</a>
+  <a href="#threat-model">Threat Model</a>
+  <a href="#method">Method</a>
   <a href="#experiment-setup">Experiment Setup</a>
   <a href="#results">Results</a>
   <a href="#limitations">Limitations</a>
@@ -196,7 +216,8 @@ author_profile: true
 
 <section id="abstract" class="block">
   <h2>Abstract</h2>
-  <p>This course project studies a practical attack surface where small lens scratches scatter light and form structured flare artifacts under strong illumination. We build physical and digital evaluation pipelines and quantify the effect on depth-related perception. Across multiple settings, scratch-induced artifacts lead to clear depth distortion and measurable geometry errors while the external scene itself remains unchanged.</p>
+  <p>This course project studies a practical attack surface where small lens scratches scatter light and form structured flare artifacts under strong illumination. Instead of treating the perturbation as image-space pixel editing, we model it as an optical-path perturbation that is fixed after deployment but activated by scene conditions (for example, bright compact lights and reflections).</p>
+  <p>We evaluate this idea in both physical and digital pipelines and measure depth-related prediction shift under directional attack objectives. Across multiple settings, scratch-induced artifacts produce substantial geometry errors while the external scene itself remains unchanged, indicating a realistic camera-side robustness gap.</p>
   <div class="summary-grid">
     <div class="summary-card">
       <h4>Threat Surface</h4>
@@ -216,6 +237,7 @@ author_profile: true
 <section id="problem-setup" class="block">
   <h2>Problem Setup</h2>
   <p>Real camera lenses can accumulate tiny scratches over time. Under bright point sources such as headlights, these scratches may produce linear flare artifacts that occlude details or introduce misleading structures for downstream vision models.</p>
+  <p>Depth-aware models rely on fragile local cues, including object boundaries, local contrast, specular highlights, and object-ground relationships. Scratch streaks interfere with these cues in a geometry-inconsistent way, so errors can propagate from depth inference to downstream tasks such as monocular 3D detection.</p>
   <div class="fig-grid">
     <figure>
       <img src="/assets/projects/scratch-attack/real-world-scratches-1.png" alt="Real-world lens scratches example 1">
@@ -226,7 +248,7 @@ author_profile: true
       <figcaption>Figure 2. Real-world lens scratch pattern (example B).</figcaption>
     </figure>
   </div>
-  <figure style="margin-top:0.8rem;">
+  <figure class="wide" style="margin-top:0.8rem;">
     <img src="/assets/projects/scratch-attack/physical-adversarial-attacks.png" alt="Physical adversarial attack categories">
     <figcaption>Figure 3. Representative directions in physical attacks on vision systems.</figcaption>
   </figure>
@@ -245,14 +267,33 @@ author_profile: true
       <figcaption>Figure 5. Focused path versus scratch-scattered path.</figcaption>
     </figure>
   </div>
-  <figure style="margin-top:0.8rem;">
+  <figure class="wide" style="margin-top:0.8rem;">
     <img src="/assets/projects/scratch-attack/attack-surface-overview.png" alt="Attack surface overview">
     <figcaption>Figure 6. Camera-side attack surface compared with object-side perturbations.</figcaption>
   </figure>
 </section>
 
+<section id="threat-model" class="block">
+  <h2>Threat Model</h2>
+  <p>We consider an attacker with short-term physical access to the victim camera system (for example, when a vehicle or device is unattended). The attacker cannot modify model weights, ISP firmware, or runtime input frames. Instead, the attacker introduces small scratches on a lens surface or protective cover and leaves the system unchanged afterward.</p>
+  <p>This creates a threat channel with three constraints:</p>
+  <ul>
+    <li><strong>Indirect control:</strong> the attacker does not optimize pixels directly, but controls scratch geometry that is transformed by image formation.</li>
+    <li><strong>Scene-conditioned activation:</strong> artifacts are strongest when bright compact sources are present near target objects.</li>
+    <li><strong>Fixed deployment:</strong> scratch parameters cannot be retuned per frame, so one configuration must generalize over an operational range.</li>
+  </ul>
+</section>
+
+<section id="method" class="block">
+  <h2>Method (SLASH Formulation)</h2>
+  <p>Following the PDF formulation, we model scratch artifacts as a trigger-conditioned optical channel. Calibrated physical parameters describe streak appearance (length, width, softness, diffusion, intensity scale), while deployment parameters encode attacker-controlled scratch orientation and offset.</p>
+  <p>The attack objective is directional: push a target prediction closer or farther while reducing collateral drift on non-target regions. For detection, objective terms also discourage degenerate behavior such as target disappearance or identity swap. Because the search space is non-convex and partially discontinuous, we optimize scratch parameters with gradient-free population methods and use CMA-ES as the default optimizer.</p>
+  <div class="note"><strong>Why optical-space optimization matters:</strong> this pipeline captures how fixed physical defects become scene-triggered image evidence, which is fundamentally different from per-image pixel perturbation.</div>
+</section>
+
 <section id="experiment-setup" class="block">
   <h2>Experiment Setup</h2>
+  <p>Digital evaluation follows the protocol summarized from the project PDF: nuScenes validation scenes with a focus on strong-light conditions, plus day/night splits for robustness comparison. We report relative depth error (RE) and RE increments to isolate attack-induced shift from each model's clean baseline error.</p>
   <div class="cols-2">
     <div>
       <h3>Physical Pipeline</h3>
@@ -265,13 +306,14 @@ author_profile: true
     <div>
       <h3>Digital Pipeline</h3>
       <ul>
-        <li>Night-time driving scenes are selected for evaluation.</li>
-        <li>Scratch-induced flare is simulated by image-space editing.</li>
-        <li>Monocular 3D detection geometry errors are measured.</li>
+        <li>nuScenes validation samples are grouped by viewing geometry for fixed-scratch optimization.</li>
+        <li>Trigger locations (headlights/specular lights) are annotated and mapped to streak artifacts.</li>
+        <li>Both "closer" and "farther" directional attacks are optimized and reported separately.</li>
+        <li>Main models include MonoDepth2 for depth and FCOS3D/PGD for monocular 3D detection.</li>
       </ul>
     </div>
   </div>
-  <figure style="margin-top:0.8rem;">
+  <figure class="compact" style="margin-top:0.8rem;">
     <img src="/assets/projects/scratch-attack/physical-attack-setup.png" alt="Physical attack setup">
     <figcaption>Figure 7. Course project physical setup for scratch-induced flare testing.</figcaption>
   </figure>
@@ -280,19 +322,49 @@ author_profile: true
 <section id="results" class="block">
   <h2>Results</h2>
   <h3>Depth Estimation</h3>
-  <p>Attacked inputs can produce hallucinated near obstacles and stronger local distortions around bright light sources.</p>
+  <p>Attacked inputs can produce hallucinated near obstacles and stronger local distortions around bright light sources. In the per-cluster digital evaluation, monocular depth models show large directional shifts, especially in night scenes where trigger lights are stronger.</p>
+  <p>Representative trends from the extracted report text:</p>
+  <ul>
+    <li>Night "closer" attacks are strongest for depth models (for example, MonoDepth2 around <code>-31.50%</code> RE increment and md4all around <code>-27.75%</code>).</li>
+    <li>Night "farther" attacks are also substantial (md4all up to about <code>+31.99%</code>).</li>
+    <li>Compared with depth models, detection models show smaller but still meaningful geometry shifts under the same optical perturbation.</li>
+  </ul>
   <div class="fig-grid">
     <figure>
       <img src="/assets/projects/scratch-attack/monodepth2-benign-vs-attacked.png" alt="Monodepth2 benign vs attacked">
       <figcaption>Figure 8. Benign and attacked depth predictions.</figcaption>
     </figure>
-    <figure>
+    <figure class="compact">
       <img src="/assets/projects/scratch-attack/table-impact-depth-estimation.png" alt="Depth estimation impact table">
       <figcaption>Figure 9. Summary of depth impact under scratch-induced flare artifacts.</figcaption>
     </figure>
   </div>
 
   <h3 style="margin-top:1rem;">3D Detection Geometry Error</h3>
+  <p>For monocular 3D detection, per-cluster numbers show a clear day/night gap: the "farther" direction is stronger at night, reaching approximately <code>+7.67%</code> (FCOS3D) and <code>+6.25%</code> (PGD), while daytime farther shifts are smaller (around <code>+3.99%</code> and <code>+3.11%</code>).</p>
+  <div class="metric-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Day (RE Farther)</th>
+          <th>Night (RE Farther)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FCOS3D</td>
+          <td>+3.99%</td>
+          <td>+7.67%</td>
+        </tr>
+        <tr>
+          <td>PGD</td>
+          <td>+3.11%</td>
+          <td>+6.25%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="metric-box">
     <table>
       <thead>
@@ -335,13 +407,13 @@ author_profile: true
       <img src="/assets/projects/scratch-attack/impact-3d-detection-multi-frame.png" alt="Multi-frame results">
       <figcaption>Figure 12. Error increase in the multi-frame setting.</figcaption>
     </figure>
-    <figure>
+    <figure class="compact">
       <img src="/assets/projects/scratch-attack/table-optimizer-ablation-study.png" alt="Optimizer ablation">
       <figcaption>Figure 13. Optimizer ablation across attack configurations.</figcaption>
     </figure>
   </div>
 
-  <figure style="margin-top:0.8rem;">
+  <figure class="wide" style="margin-top:0.8rem;">
     <img src="/assets/projects/scratch-attack/examples-3d-detection.png" alt="3D detection examples">
     <figcaption>Figure 14. Qualitative examples in image and BEV views.</figcaption>
   </figure>
@@ -352,7 +424,9 @@ author_profile: true
   <h2>Limitations</h2>
   <ul>
     <li>Current experiments emphasize strong-light and night-scene conditions.</li>
+    <li>Attack effectiveness drops when compact bright triggers are absent or highly diffuse.</li>
     <li>Scratch parameterization is simplified and does not cover every defect morphology.</li>
+    <li>Lens coatings and protective materials can change scattering behavior and reduce transferability.</li>
     <li>Cross-device generalization requires broader camera hardware testing.</li>
   </ul>
 </section>

@@ -48,6 +48,8 @@ Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.p
 </div>
 </div> -->
 
+- Q. He, **Z. Zhuang**, Y. Wu, L. Zhang, X. Yuan, “Scratched Lenses, Shifted Depth: Passive Camera-Side Optical Attacks,” submitted to NDSS 2027.
+- L. Zhang, C. Liang, **Z. Zhuang**, Y. Sun, F. Fang, X. Yuan, and D. Niyato, “Secure Semantic Communications via AI Defenses: Fundamentals, Solutions, and Future Directions,” submitted to IEEE Commun. Surveys Tuts
 - C. Wang, **Z. Zhuang**, D. Wen, Y. Shi, X. Wang, "Decentralized Integration of Sensing-Communication-Computation for Multi-Task Edge AI Inference", IEEE Transactions on Wireless Communications (TWC) \[[pdf](https://www.xxcpeter.tech/assets/pubs/TWC25_Decentralized_ISCC.pdf)\]
 - **Z. Zhuang**, D. Wen, Y. Shi, G. Zhu, S. Wu and D. Niyato, "Integrated Sensing-Communication-Computation for Over-the-Air Edge AI Inference", IEEE Transactions on Wireless Communications (TWC) \[[pdf](https://www.xxcpeter.tech/assets/pubs/TWC23_ISAC_Aircomp_Edge_Inference.pdf)\]
 - **Z. Zhuang**, D. Wen, Y. Shi, "Decentralized Over-the-Air Computation for Edge AI Inference with Integrated Sensing and Communication", 2023 IEEE Global Communications Conference (GLOBECOM), Kuala Lumpur, Malaysia \[[pdf](https://www.xxcpeter.tech/assets/pubs/GC23_Decentralize_FD_EdgeAI.pdf)\] \[[slide](https://www.xxcpeter.tech/assets/pubs/GC23_slide.pdf)\]
@@ -57,5 +59,7 @@ Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.p
 - *2023 Nov*, ShanghaiTech Merit Student (Top 10%)
 
 # 🧑‍🏫 Teaching Assistant Experience
+- Logic and Computing Device (Spring 2026)
+- Communication Systems (Spring 2026)
 - Convex Optimization (2023 Fall)
 - Introduction to Information Science and Technology (2021 & 2022 Fall)

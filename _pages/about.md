@@ -66,4 +66,6 @@ Please feel free to access my [CV](https://www.xxcpeter.tech/assets/CV_ZZhuang.p
 
 # Visitor Map
 
-<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=WWzj7wUZaMMSGxBXkDOfgK8JsOEUsd49IbElxacNIp0&cl=ffffff&w=a"></script>
+<div style="max-width: 420px; margin: 0 auto;">
+  <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=WWzj7wUZaMMSGxBXkDOfgK8JsOEUsd49IbElxacNIp0&cl=ffffff&w=a&t=n"></script>
+</div>

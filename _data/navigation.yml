@@ -12,9 +12,6 @@ main:
   - title: "Publications"
     url: "/#-publications"
 
-  - title: "Course Project"
-    url: "/scratch-attack/"
-
   - title: "Blog"
     url: "/blog/"
 
